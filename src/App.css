@@ -1,0 +1,66 @@
+
+/*  general styles  */ 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+}
+html {
+  font-size: 62.5%;/*  16px = 62.5%= 1rem  */ 
+}
+body {
+  font: 1.6rem helvetica;
+  color: wheat;
+  height: 100vh;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+  background: url(../bgWeather.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.grid-container {
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  grid-template-columns: 1fr;
+  grid-template-rows: 8rem 1fr auto;
+  height: 100%;
+  background-color: black;
+  opacity: 0.8;
+}
+
+/*  header styling  */
+.header {
+   
+} 
+/*  main seciton styling  */ 
+.icon-size {
+ font-size: 8rem;
+}
+.main-wraper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.min-max-temp {
+    display: flex;
+    justify-content: space-between;
+}
+
+/*  footer styling  */ 
+.footer {
+  
+}
