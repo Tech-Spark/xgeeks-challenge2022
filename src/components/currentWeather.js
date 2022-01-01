@@ -1,6 +1,7 @@
 import React, {useState, useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { getCurrentLocationWeather } from '../actions/currentWeatherAction';
+import { geoLocation } from '../getGeoLocation';
 import WeatherIcons from './weatherIcons';
 
 export default function CurrentWeather(props) {
@@ -12,21 +13,10 @@ export default function CurrentWeather(props) {
 
 
     useEffect(()=> {
-        // checking user geolocation is on or off
-        if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition((position) => {
-            setLat(position.coords.latitude);
-            setLon(position.coords.longitude);
-        });
-        }
+        // getting user geolocation 
+        geoLocation(setLat, setLon);
         dispatch(getCurrentLocationWeather(lat, lon));
     }, [dispatch, lat, lon,]);
-
-    // converting kelvin to celsius
-    const calCelsius = (temp) => {
-        let cell = Math.floor(temp - 273.15);
-        return cell
-    }
    
 
     return (
@@ -41,10 +31,10 @@ export default function CurrentWeather(props) {
                 <div>
                     <h1>{data.name}</h1>
                     <WeatherIcons rangeId={data.weather[0].id}/>
-                    <h1>{calCelsius(data.main.temp)}&deg;</h1>
+                    <h1>{Math.floor(data.main.temp)}&deg;</h1>
                     <h3 className='min-max-temp'>
-                        <span className='max-temp'>H {calCelsius(data.main.temp_max)}&deg;</span>
-                        <span className='min-temp'>L {calCelsius(data.main.temp_min)}&deg;</span>
+                        <span className='max-temp'>max {Math.floor(data.main.temp_max)}&deg;</span>
+                        <span className='min-temp'>min {Math.floor(data.main.temp_min)}&deg;</span>
                     </h3>
                     <p className='brif'>{data.weather[0].description}</p>
                 </div>

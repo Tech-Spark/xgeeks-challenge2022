@@ -3,7 +3,8 @@ import {applyMiddleware,
         compose, 
         combineReducers} from 'redux';
 import thunk from 'redux-thunk';
-import { currentWeatherReducer } from './reducers/currentLocationReducers';
+import { cityWeatherReducer } from './reducers/cityWeatherReducers';
+import { currentWeatherForecastReducer, currentWeatherReducer } from './reducers/currentLocationReducers';
 
 
 const initialState = {
@@ -13,6 +14,8 @@ const initialState = {
 
 const reducer = combineReducers({
     currentWeather: currentWeatherReducer,
+    currentWeatherForecast: currentWeatherForecastReducer,
+    cityWeather: cityWeatherReducer,
     
 });
 

@@ -20,10 +20,8 @@ function App() {
               <Header/>
           </div>
           <div className="main">
-              <div className='main-wraper'>
                   <CurrentLocationWeather/>
                   <SearchCityWeather/>
-              </div>
           </div>
           <div className="footer">
             HEY
