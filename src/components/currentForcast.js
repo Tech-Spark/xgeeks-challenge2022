@@ -7,7 +7,8 @@ import WeatherForecastIcons from './weatherForecastIcons';
 
 
 
-export default function CurrentForcast() {
+export default function CurrentForcast(props) {
+    const {cityName} = props;
     const [lat, setLat] = useState([39.74362]); // default latitude is leiria
     const [lon, setLon] = useState([-8.80705]);// same for longitude
     const currentWeatherForecast = useSelector(state => state.currentWeatherForecast);
@@ -35,7 +36,7 @@ export default function CurrentForcast() {
             )
             : typeof data != 'undefined'? (
                     <div className='forecast-container'>
-                        <h2>Weather forecast for next 7 days:</h2>
+                        <h2>{cityName} Weather forecast for next 7 days:</h2>
                         <ul className='weekly-forecast'>
                         {data.daily.slice(1).map((day, index)=> (
                           <li key={index}>

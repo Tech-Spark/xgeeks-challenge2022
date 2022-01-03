@@ -5,6 +5,7 @@ import { geoLocation } from '../getGeoLocation';
 import WeatherIcons from './weatherIcons';
 
 export default function CurrentWeather(props) {
+    const {setCityName} = props;
     const [lat, setLat] = useState([39.74362]); // default latitude is leiria
     const [lon, setLon] = useState([-8.80705]);// same for longitude
     const currentWeather = useSelector(state => state.currentWeather);
@@ -29,7 +30,7 @@ export default function CurrentWeather(props) {
             )
             : typeof data != 'undefined'? (
                 <div className='current-wea'>
-                    <h2>{data.name}</h2>
+                    <h2>{data.name}{setCityName(data.name)}</h2>
                     <WeatherIcons rangeId={data.weather[0].id}/>
                     <h1>{Math.floor(data.main.temp)}&deg;</h1>
                     <h4 className='min-max-temp'>

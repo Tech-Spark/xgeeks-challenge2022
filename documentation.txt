@@ -1,0 +1,74 @@
+!!..Some helful information about this project..!!
+Name: "Weather app" (xgeeks-challenge project)
+Language: React js, Redux;
+We need tools, Node js and Code editor VS, or/ other' to run this application on any machine;
+
+we can check packege.json file and install all the depedencies
+
+npm install 'command ' to get all the necessairy packages.
+
+In the terminal when we are in the 'weatherapp' folder in the terminal . 
+give the command 'npm start' hopefully , it will open in the localhos:300, if everything goes right
+
+
+Folder stracture:
+
+basically, when i created react app, default folder stracture, only i added few folder to SRC folder
+-- actions,
+-- coponents,
+-- reduces,
+&& some js files 
+----api_keys.js, to store api keys securely 
+----getGeoLocation.js, export the function to get geo location of the user,
+----store.js "Redux store"--
+
+
+
+-------In actions folder we have , cityWeatherACtions, currentWeatherAction file,
+here I wrote redux actions function, export it to different  page----
+
+--- In the component folder we have all the corresponding componets.
+we use app.js as a main component. all the childeren component come and meet their.
+we divided app.js into three main seciotn 
+--header,
+--main,
+--footer,
+
+as the sections are self-explanatory . 
+in header.js we have everything about herader of the page.
+in the main section we 
+--currentLocation component;
+-- searchCityWeather "".
+currentWeather && currentForecast meet in the currentLocation component
+[in the currentWeather component i have current weather api call "openweathermap" current weather];
+
+--currentWeather component,
+--currentForecast """ [openweathermap "onecall" api for the forecast]
+ this 3 components produce the current weather result & 7 days forecast weather of the user current location
+ if somehow it api failed to show the location. by default it will show weather from Leiria.
+
+[[seachCityWeather.]]
+
+I have copy pas "lib folder " from https://github.com/MattDobsonWeb/next...
+ 
+in this folder we have static city name with country and geo location coord. 
+
+wrote a function to cheek user input againest this static city names.
+and shoe five example city name if avaiable . base on user selectin .
+we give a api call to "openweathermap" onecall api with selected city coord and show the result.
+
+--constants folder exort const variables:  to actions and reuders files
+
+--rducers folder . state management for Redux. 
+rducer functions has been written and exported to store.js 
+
+[][]
+
+first time writing "documentatin" for a project. might not be professional ....."" any thank you for reading.---
+
+
+
+
+
+
+

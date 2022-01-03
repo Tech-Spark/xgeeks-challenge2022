@@ -10,10 +10,12 @@ export default function SearchCityWeather(props) {
     const [selectedCity, setSelectedCity] = useState({});
     const [showWeather,  setShowWeather]=useState(false);
 
+    // 
     const getCity = (city) => {
         setSelectedCity(city);
          setShowWeather(true);
     }
+
     const onChange = (e) => {
         const {value} = e.target;
         setQuery(value);
