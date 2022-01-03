@@ -34,30 +34,33 @@ export default function CurrentForcast() {
                 <p>{error.message}</p>
             )
             : typeof data != 'undefined'? (
-                    <div>
+                    <div className='forecast-container'>
                         <h2>Weather forecast for next 7 days:</h2>
                         <ul className='weekly-forecast'>
                         {data.daily.slice(1).map((day, index)=> (
                           <li key={index}>
-                              <h3>{moment.unix(day.dt).format("dddd")}</h3>
                               <div>
-                                  <span>max {day.temp.max.toFixed(0)}&deg;</span>
-                                  <span>min {day.temp.min.toFixed(0)}&deg;</span>
-                              </div>
-                              <div>
-                                  <WeatherForecastIcons rangeId={day.weather[0].id}/>
-                              </div>
-                              <div>
-                                  <span>{day.weather[0].description}</span>
-                              </div>
-                              <div>
-                                  <p>Sunrise</p>
-                                  <span> {moment.unix(day.sunrise).format("LT")}</span>
-                                  
-                              </div>
-                              <div>
-                                  <p>Sunset</p>
-                                  <span>{moment.unix(day.sunset).format("LT")}</span>
+                                    <h3>{moment.unix(day.dt).format("dddd")}</h3>
+                                    <div className='forecast-min-max'>
+                                        <span className='span-one'>max {day.temp.max.toFixed(0)}&deg;</span>
+                                        <span className='span-two'>min {day.temp.min.toFixed(0)}&deg;</span>
+                                    </div>
+                                    <div className='forecast-icon'>
+                                        <WeatherForecastIcons rangeId={day.weather[0].id}/>
+                                    </div>
+                                    <div className='forecast-des'>
+                                        <span>{day.weather[0].description}</span>
+                                    </div>
+                                    <div className='forecast-sun'>
+                                        <div>
+                                            <p>Sunrise</p>
+                                            <span> {moment.unix(day.sunrise).format("LT")}</span>
+                                        </div>
+                                        <div>
+                                            <p>Sunset</p>
+                                            <span>{moment.unix(day.sunset).format("LT")}</span>
+                                        </div>
+                                    </div>
                               </div>
                           </li>  
                         )

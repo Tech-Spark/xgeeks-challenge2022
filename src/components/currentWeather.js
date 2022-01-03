@@ -28,14 +28,14 @@ export default function CurrentWeather(props) {
                 <p>{error.message}</p>
             )
             : typeof data != 'undefined'? (
-                <div>
-                    <h1>{data.name}</h1>
+                <div className='current-wea'>
+                    <h2>{data.name}</h2>
                     <WeatherIcons rangeId={data.weather[0].id}/>
                     <h1>{Math.floor(data.main.temp)}&deg;</h1>
-                    <h3 className='min-max-temp'>
+                    <h4 className='min-max-temp'>
                         <span className='max-temp'>max {Math.floor(data.main.temp_max)}&deg;</span>
                         <span className='min-temp'>min {Math.floor(data.main.temp_min)}&deg;</span>
-                    </h3>
+                    </h4>
                     <p className='brif'>{data.weather[0].description}</p>
                 </div>
             )

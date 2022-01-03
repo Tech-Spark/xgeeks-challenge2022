@@ -14,7 +14,7 @@ export default function CityWeatherResult(props) {
     const {loading, data, error} = cityWeather;
     const dispatch = useDispatch();
 
-    console.log(data);
+
     useEffect(()=> {
         dispatch(getCityWeather(lat, lon));
     }, [dispatch, lat, lon]);
@@ -30,43 +30,44 @@ export default function CityWeatherResult(props) {
             )
             : typeof data != 'undefined'? (
                 <div className='city-current-forecast'>
-                    <div>
-                        <h1>{cityName} City Current Weather!</h1>
+                    <div className='current-wea'>
+                        <h2>{cityName} City Current Weather!</h2>
                         <div>
-                            <h1>{cityName}  ({country})</h1>
+                            <h2>{cityName}  ({country})</h2>
                             <WeatherIcons rangeId={data.current.weather[0].id}/>
                             <h1>{Math.floor(data.current.temp)}&deg;</h1>
-                            <h3 className='min-max-temp'>
+                            <h4 className='min-max-temp'>
                                 <span className='max-temp'>max {Math.floor(data.daily[0].temp.max)}&deg;</span>
                                 <span className='min-temp'>min {Math.floor(data.daily[0].temp.min)}&deg;</span>
-                            </h3>
+                            </h4>
                             <p className='brif'>{data.current.weather[0].description}</p>
                         </div>
                     </div>
                     <div>
-                        <h2>{cityName} City Weather forecast for next 7 days:</h2>
+                        <h2 className='city-name'>{cityName} Weather forecast for next 7 days:</h2>
                         <ul className='weekly-forecast'>
                         {data.daily.slice(1).map((day, index)=> (
                           <li key={index}>
                               <h3>{moment.unix(day.dt).format("dddd")}</h3>
-                              <div>
+                              <div className='forecast-min-max'>
                                   <span>max {day.temp.max.toFixed(0)}&deg;</span>
                                   <span>min {day.temp.min.toFixed(0)}&deg;</span>
                               </div>
-                              <div>
+                              <div className='forecast-icon'>
                                   <WeatherForecastIcons rangeId={day.weather[0].id}/>
                               </div>
                               <div>
-                                  <span>{day.weather[0].description}</span>
+                                  <span className='forecast-des'>{day.weather[0].description}</span>
                               </div>
-                              <div>
-                                  <p>Sunrise</p>
-                                  <span> {moment.unix(day.sunrise).format("LT")}</span>
-                                  
-                              </div>
-                              <div>
-                                  <p>Sunset</p>
-                                  <span>{moment.unix(day.sunset).format("LT")}</span>
+                              <div className='forecast-sun'>
+                                    <div>
+                                        <p>Sunrise</p>
+                                        <span> {moment.unix(day.sunrise).format("LT")}</span>
+                                    </div>
+                                    <div>
+                                        <p>Sunset</p>
+                                        <span>{moment.unix(day.sunset).format("LT")}</span>
+                                    </div>
                               </div>
                           </li>  
                         )

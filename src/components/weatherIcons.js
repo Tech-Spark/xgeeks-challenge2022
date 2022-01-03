@@ -46,7 +46,7 @@ export default function WeatherIcons(props) {
     }, [rangeId])
         
     return (
-        <div>
+        <div className='wea-icon'>
             <i className={`wi ${icon} } icon-size`}></i>
         </div>
     )

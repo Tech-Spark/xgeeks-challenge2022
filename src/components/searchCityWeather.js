@@ -22,7 +22,7 @@ export default function SearchCityWeather(props) {
         if(value.length > 3 ){
             for (let city of cities) {
                 if(matchingCities.length >= 5) {
-                    return;
+                    break;
                 }
             const match = city.name.toLowerCase().startsWith(value.toLowerCase());
                 if(match) {
@@ -37,34 +37,36 @@ export default function SearchCityWeather(props) {
     return (
         <div>
             <div className='city-search-container'>
-                <h1>Get the city weather you want to know!</h1>
-                <div>
-                    <label htmlFor="city">Select a city</label>
-                </div>
-                <input type="text" name='city' value={query} onChange={onChange}/>
-                <div className='cities-div'>
-                  {
-                    query.length > 3 && (
-                        <ul>
-                            {results.length > 0 ? (
-                                results.map((city, index) => (
-                                    <li key={index}>
-                                        <Link to='#' onClick={()=> getCity(city)}>
-                                        {city.name}{city.state? `${city.state}` : ''} 
-                                        <span>({city.country})</span>
-                                        </Link>
-                                    </li>
-                                ))
-                             )
-                             : (
-                                <li>No results..</li>
+                <div className='sea-box'>
+                    <h2>Get the city weather you wish to know!</h2>
+                    <label htmlFor="city">Write a city Name: </label>
+                    <input type="text" name='city' value={query} onChange={onChange}/>
+                    <div className='cities-div'>
+                        {
+                            query.length > 3 && (
+                            <ul>
+                                {results.length > 0 ? (
+                                    results.map((city, index) => (
+                                        <li key={index}>
+                                            <Link to='#' onClick={()=> getCity(city)}>
+                                            {city.name}{city.state? `${city.state}` : ''} 
+                                            <span>({city.country})</span>
+                                            </Link>
+                                        </li>
+                                     ))
                                 )
-                            }
-                        </ul>
-                        )
-                  }
+                                : (
+                                    <li>No results..</li>
+                                    )
+                                }
+                            </ul>
+                            )
+                        }
+                        </div>
+                    </div>
                 </div>
-            </div>
+                
+                
             {
                 showWeather ? <CityWeatherResult selectedCity={selectedCity}/>: ''
             }

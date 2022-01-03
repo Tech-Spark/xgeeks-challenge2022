@@ -24,7 +24,7 @@ function App() {
                   <SearchCityWeather/>
           </div>
           <div className="footer">
-            HEY
+             <p>weatherapp@copyRight2022.</p>
           </div>
       </div>
     </BrowserRouter>
